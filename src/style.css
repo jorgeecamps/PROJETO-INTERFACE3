@@ -1,0 +1,181 @@
+/* Reset de margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Definição de variáveis de cor */
+  :root {
+    --gray-900: #121214;
+    --gray-300: #444448;
+    --primary-200: #fcd085;
+    --primary-400: #0c61d1;
+    font-size: 62.5%; /* Para definir a base do rem em 10px */
+  }
+  
+  /* Estilo para elementos apenas para leitores de tela */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border-width: 0;
+    white-space: nowrap;
+  }
+  
+  /* Estilo base para o corpo */
+  body {
+    background-color: #121213;
+    font-size: 1.6rem;
+    font-family: sans-serif;
+    color: white;
+  }
+  
+  /* Container principal */
+  .container {
+    text-align: center;
+    padding: 3.2rem;
+    max-width: 46rem;
+    margin: auto;
+  }
+  
+  /* Título principal */
+  .title {
+    opacity: 0.9;
+  }
+  
+  /* Wrapper do input tamanho barra pesquisa*/
+  .containerInput {
+    position: relative;
+    margin-top: 2rem;
+  }
+  
+  /* Estilo do input */
+  .containerInput input {
+    padding: 1rem 1.6rem;
+    border-radius: 0.8rem;
+    background-color: #444448;
+    border: 0;
+    width: 100%;
+    color: white;
+    font-size: 1.6rem;
+  }
+  
+  /* Ícone dentro do input */
+  .containerInput i {
+    position: absolute;
+    right: 1.2rem;
+    bottom: 1.2rem;
+  }
+  
+  /* Estilo do botão de busca */
+  .buttonSearch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.6rem;
+    background-color: #0c61d1;
+    color: #121214;
+    border: 0;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    font-size: 1.6rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: 0.2rem;
+  }
+  
+  /* Container principal dos resultados */
+  .main {
+    padding-inline: 0rem;
+    max-width: 70rem;
+    margin: 3.2rem auto;
+    flex-direction: row;
+    width: 500px;
+  }
+  
+  /* Lista de cocktails */
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem;
+    list-style: none;
+  }
+  
+  ul:has(li:hover) li:not(:hover) {
+    opacity: 0.6;
+    scale: 0.98;
+  }
+  
+  /* Cada item da lista */
+  li {
+    background-color: var(--gray-300);
+    padding: 2.8rem;
+    border-radius: 0.8rem;
+    color: white;
+    transition: all 0.2s;
+  }
+  
+  /* Diminiur e aumentar imagem dos cocktails */
+  li img {
+    width: 100%; /* Define a largura da imagem como 100% do container do item */
+    max-width: 150px; /* Define uma largura máxima para a imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove o espaço embaixo da imagem */
+    margin: 1.6rem auto; /* Centraliza a imagem e adiciona margem superior e inferior */
+  }
+  
+  /* Header de cada item */
+  li .header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  /* Ícone de cada item */
+  li i {
+    font-size: 2.4rem;
+    background-color: var(--primary-400);
+    color: var(--gray-900);
+    border-radius: 50%;
+    padding: 0.4rem;
+  }
+  
+  /* Título de cada item */
+  li h2 {
+    opacity: 0.9;
+  }
+  
+  /* Parágrafos de cada item */
+  li p {
+    margin-top: 1.6rem;
+    opacity: 0.5;
+  }
+  
+  /* Links de cada item */
+  li a {
+    display: inline-block;
+    color: white;
+    margin-top: 1.6rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  
+  li a:hover {
+    color: var(--primary-200);
+  }
+  
+  /* Ajustes para telas pequenas */
+  @media (max-width: 36rem) {
+    ul {
+      grid-template-columns: 1fr;
+    }
+  }
+  
