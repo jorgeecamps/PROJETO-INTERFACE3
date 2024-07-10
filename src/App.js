@@ -7,20 +7,28 @@ import api from './services/api';
 function App() {
   const [input, setInput] = useState('');
   const [cocktails, setCocktails] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  async function handleSearch() {
+  async function handleSearch(event) {
+    event.preventDefault();
+
     if (input === '') {
       alert("Preencha o campo");
       return;
     }
 
     try {
+      setLoading(true);
+
       const response = await api.get(`search.php?f=${input}`);
+
       setCocktails(response.data.drinks || []);
       setInput('');
     } catch {
       alert("Ops, erro ao buscar");
       setInput('');
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -28,20 +36,22 @@ function App() {
     <div className="container">
       <h1 className="title">Buscador de Coquetéis</h1>
 
-      <div className="containerInput">
+      <form className='containerInput' onSubmit={handleSearch}>
         <input
           type="text"
           placeholder="Digite uma letra para buscar cocktails.."
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button className="buttonSearch" onClick={handleSearch}>
+        <button className="buttonSearch" type='submit'>
           <FiSearch size={25} color='#FFF' />
         </button>
-      </div>
+      </form>
 
-      {cocktails.length > 0 && (
-        <main className='main'>
+      <main className='main'>
+        {loading ? (
+          <p>Buscando Coquetéis...</p>
+        ) : (
           <ul>
             {cocktails.map(cocktail => (
               <li key={cocktail.idDrink}>
@@ -57,8 +67,8 @@ function App() {
               </li>
             ))}
           </ul>
-        </main>
-      )}
+        )}
+      </main>
     </div>
   );
 }
